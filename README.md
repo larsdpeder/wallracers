@@ -1,3 +1,6 @@
+<img width="2032" height="1220" alt="Screenshot 2026-02-20 at 12 45 25" src="https://github.com/user-attachments/assets/c4d37483-2f8b-40be-be9f-6f7a60d4b022" />
+
+
 # Wall Racers
 
 A top-down racing game where kids scan their toy cars with a webcam and race them on 5 iconic racing circuits. Built with Pygame — designed to be projected on a wall for group play.
