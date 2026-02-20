@@ -1,3 +1,4 @@
+import os
 import pygame
 import sys
 from enum import Enum
@@ -60,10 +61,21 @@ class Game:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self._quit()
-                    self._handle_key(event.key)
+                    elif event.key == pygame.K_F12:
+                        self._screenshot()
+                    else:
+                        self._handle_key(event.key)
             self._update(dt)
             self._render()
             pygame.display.flip()
+
+    def _screenshot(self):
+        shots_dir = os.path.join(os.path.dirname(__file__), "screenshots")
+        os.makedirs(shots_dir, exist_ok=True)
+        existing = [f for f in os.listdir(shots_dir) if f.endswith(".png")]
+        num = len(existing) + 1
+        path = os.path.join(shots_dir, f"screenshot_{num:03d}.png")
+        pygame.image.save(self.screen, path)
 
     def _quit(self):
         self.scanner.close()
