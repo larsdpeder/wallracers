@@ -61,10 +61,7 @@ class Game:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self._quit()
-                    elif event.key == pygame.K_F12:
-                        self._screenshot()
-                    else:
-                        self._handle_key(event.key)
+                    self._handle_key(event.key)
             self._update(dt)
             self._render()
             pygame.display.flip()
@@ -83,6 +80,9 @@ class Game:
         sys.exit()
 
     def _handle_key(self, key):
+        if key == pygame.K_BACKQUOTE:
+            self._screenshot()
+            return
         if self.state == State.PLAYER_SELECT:
             if key in (pygame.K_LEFT, pygame.K_a):
                 self.num_players = max(1, self.num_players - 1)
